@@ -37,7 +37,7 @@
     padding: 0 2rem;
 
     @include mobile {
-        justify-content: center;
+      justify-content: center;
     }
   }
 
@@ -45,7 +45,7 @@
     @include flex(center, unset);
 
     & > * ~ * {
-        margin-left: 2rem;
+      margin-left: 2rem;
     }
 
     li {
