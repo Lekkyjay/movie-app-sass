@@ -17,7 +17,6 @@ export default function HeroSlider() {
       const params = {page: 1}
       try {
         const response = await tmdbApi.getMoviesList(movieType.popular, params)
-        console.log(response)
         setMovieItems(response.data.results.slice(1, 4))
       } catch(err) {
         console.log(err)
