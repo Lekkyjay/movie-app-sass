@@ -32,8 +32,9 @@ const tmdbApi = {
     return axiosClient.get(queryUrl)
   },
   getTvList: (type: string, params: any) => {
-    const url = 'tv/' + tvType[type as keyof typeof tvType]
-    return axiosClient.get(url, params)
+    const urlParams = setUrlParams(params)
+    const url = 'tv/' + tvType[type as keyof typeof tvType] + `/?${urlParams}`
+    return axiosClient.get(url)
   },
   getVideos: (categ: string, id: string) => {
     const urlParams = setUrlParams({})
@@ -53,8 +54,9 @@ const tmdbApi = {
     return axiosClient.get(url, {params: {}})
   },
   similar: (categ: string, id: string) => {
-    const url = category[categ as keyof typeof category] + '/' + id + '/similar'
-    return axiosClient.get(url, {params: {}})
+    const urlParams = setUrlParams({})
+    const url = category[categ as keyof typeof category] + '/' + id + '/similar?' +  + urlParams
+    return axiosClient.get(url)
   }
 }
 

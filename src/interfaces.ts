@@ -14,6 +14,7 @@ export interface IMovieItem {
   poster_path: string
   overview: string
   title: string
+  name: string
   id: string
 }
 
