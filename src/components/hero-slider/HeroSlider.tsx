@@ -17,8 +17,8 @@ export default function HeroSlider() {
       const params = {page: 1}
       try {
         const response = await tmdbApi.getMoviesList(movieType.popular, params)
-        setMovieItems(response.data.results.slice(1, 4))
         console.log(response)
+        setMovieItems(response.data.results.slice(1, 4))
       } catch(err) {
         console.log(err)
       }
@@ -46,7 +46,7 @@ export default function HeroSlider() {
         }
       </Swiper>
       {
-          movieItems.map((item, i) => <TrailerModal key={i} item={item}/>)
+        movieItems.map((item, i) => <TrailerModal key={i} item={item}/>)
       }
     </div>
   )

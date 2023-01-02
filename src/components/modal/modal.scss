@@ -28,19 +28,19 @@
     position: relative;
 
     @include tablet {
-        width: 80%;
+      width: 80%;
     }
 
     &__close {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        font-size: 1.5rem;
-        cursor: pointer;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
 
-        &:hover {
-            color: $main-color;
-        }
+      &:hover {
+        color: $main-color;
+      }
     }
   }
 

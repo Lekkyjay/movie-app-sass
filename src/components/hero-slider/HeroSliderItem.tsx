@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import apiConfig from '../../api/apiConfig';
-import tmdbApi, { category } from '../../api/tmdbApi';
-import { IMovieItem } from '../../interfaces';
-import Button from '../button/Button';
-import OutlineButton from '../button/OutlineButton';
+import { useNavigate } from 'react-router-dom'
+import apiConfig from '../../api/apiConfig'
+import tmdbApi, { category } from '../../api/tmdbApi'
+import { IMovieItem } from '../../interfaces'
+import Button from '../button/Button'
+import OutlineButton from '../button/OutlineButton'
 
 interface IProps {
   item: IMovieItem
@@ -11,23 +11,24 @@ interface IProps {
 }
 
 export default function HeroSliderItem(props: IProps) {
-  const navigate = useNavigate();
-  const item = props.item;
-  const background = apiConfig.originalImage(item.backdrop_path ? item.backdrop_path : item.poster_path);
+  const navigate = useNavigate()
+  const item = props.item
+  const background = apiConfig.originalImage(item.backdrop_path ? item.backdrop_path : item.poster_path)
 
   const setModalActive = async () => {
-    const modal = document.querySelector(`#modal_${item.id}`);
+    const modal = document.querySelector(`#modal_${item.id}`)
 
-    const videos = await tmdbApi.getVideos(category.movie, item.id);
+    const videos = await tmdbApi.getVideos(category.movie, item.id)
+    console.log({videos})
 
     if (videos.data.results.length > 0) {
-      const videSrc = 'https://www.youtube.com/embed/' + videos.data.results[0].key;
-      modal?.querySelector('.modal__content > iframe')?.setAttribute('src', videSrc);
+      const videSrc = 'https://www.youtube.com/embed/' + videos.data.results[0].key
+      modal?.querySelector('.modal__content > iframe')?.setAttribute('src', videSrc)
     } else {
-      modal!.querySelector('.modal__content')!.innerHTML = 'No trailer';
+      modal!.querySelector('.modal__content')!.innerHTML = 'No trailer'
     }
 
-    modal?.classList.toggle('active');
+    modal?.classList.toggle('active')
   }
 
   return (

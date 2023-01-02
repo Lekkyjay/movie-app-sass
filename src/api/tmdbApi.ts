@@ -36,8 +36,9 @@ const tmdbApi = {
     return axiosClient.get(url, params)
   },
   getVideos: (categ: string, id: string) => {
-    const url = category[categ as keyof typeof category] + '/' + id + '/videos'
-    return axiosClient.get(url, {params: {}})
+    const urlParams = setUrlParams({})
+    const url = category[categ as keyof typeof category] + '/' + id + '/videos?' + urlParams
+    return axiosClient.get(url)
   },
   search: (categ: string, params: any) => {
     const url = 'search/' + category[categ as keyof typeof category]
