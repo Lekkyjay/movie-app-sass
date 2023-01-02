@@ -1,4 +1,5 @@
 import axiosClient from "./axiosClient"
+import apiConfig from "./apiConfig"
 
 export const category = {
   movie: 'movie',
@@ -17,10 +18,18 @@ export const tvType = {
   on_the_air: 'on_the_air'
 }
 
+const api_key = { api_key: apiConfig.apiKey }
+
+const setUrlParams = (params: any) => {
+  const queryParams = { ...params, ...api_key }
+  return new URLSearchParams(queryParams)
+}
+
 const tmdbApi = {
   getMoviesList: (type: string, params: any) => {
-    const url = 'movie/' + movieType[type as keyof typeof movieType]
-    return axiosClient.get(url, params)
+    const urlParams = setUrlParams(params)
+    const queryUrl = 'movie/' + movieType[type as keyof typeof movieType] + `/?${urlParams}`
+    return axiosClient.get(queryUrl)
   },
   getTvList: (type: string, params: any) => {
     const url = 'tv/' + tvType[type as keyof typeof tvType]
