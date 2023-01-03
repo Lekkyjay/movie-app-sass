@@ -16,10 +16,33 @@ export interface IMovieItem {
   title: string
   name: string
   id: string
+  genres: IGenre[]
 }
 
 export interface IMovieList {
   id: number
   page: number
   results: IResult[]
+}
+
+export interface IGenre {
+  id: number
+  name: string
+}
+
+export interface ICast {
+  id: number
+  name: string
+  profile_path: string
+}
+
+export interface IVideo {
+  iso_639_1: string
+  iso_3166_1: string
+  name: string
+  key: string
+  site: string
+  size: number
+  type: string
+  id: string
 }

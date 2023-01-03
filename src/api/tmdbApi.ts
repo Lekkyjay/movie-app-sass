@@ -47,16 +47,18 @@ const tmdbApi = {
     return axiosClient.get(url)
   },
   detail: (categ: string, id: string, params: any) => {
-    const url = category[categ  as keyof typeof category] + '/' + id
-    return axiosClient.get(url, params)
+    const urlParams = setUrlParams(params)
+    const url = category[categ  as keyof typeof category] + '/' + id + `?${urlParams}`
+    return axiosClient.get(url)
   },
   credits: (categ: string, id: string) => {
-    const url = category[categ as keyof typeof category] + '/' + id + '/credits'
-    return axiosClient.get(url, {params: {}})
+    const urlParams = setUrlParams({})
+    const url = category[categ as keyof typeof category] + '/' + id + '/credits?'  + urlParams
+    return axiosClient.get(url)
   },
   similar: (categ: string, id: string) => {
     const urlParams = setUrlParams({})
-    const url = category[categ as keyof typeof category] + '/' + id + '/similar?' +  + urlParams
+    const url = category[categ as keyof typeof category] + '/' + id + '/similar?' + urlParams
     return axiosClient.get(url)
   }
 }
